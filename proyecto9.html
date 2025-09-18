@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultotio Nova Vitalis</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Remix Icon CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial;
+      background: radial-gradient(1000px 600px at -10% -10%, #C8D9E6 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #5B88B2 0%, transparent 60%),
+                  radial-gradient(1000px 600px at 50% 110%, #C8D9E6 0%, transparent 60%),
+                  linear-gradient(180deg, #FFFFFF 0%, #FBF9E4 100%);
+      color: #122C4F; /* Texto azul oscuro */
+    }
+
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .soft { box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(0,0,0,.15), transparent); }
+
+    .tag {
+      border: 1px solid rgba(0,0,0,.1);
+      background: rgba(92,136,178,.15);
+      color: #122C4F;
+    }
+
+    /* Colores personalizados */
+    .bg-skyblue { background-color: #C8D9E6; }
+    .bg-midnight { background-color: #122C4F; }
+    .text-midnight { color: #122C4F; }
+    .text-ocean { color: #5B88B2; }
+    .text-noir { color: #000000; }
+    .text-navy { color: #2F4156; }
+    .text-teal { color: #567C8D; }
+    .bg-pearl { background-color: #FBF9E4; }
+    .bg-white-custom { background-color: #FFFFFF; }
+
+    /* Botones */
+    .btn-primary {
+      background-color: #5B88B2; 
+      color: #ffffff; 
+    }
+    .btn-primary:hover { background-color: #567C8D; }
+
+    .btn-secondary {
+      background-color: rgba(92,136,178,0.15);
+      color: #122C4F;
+    }
+    .btn-secondary:hover { background-color: rgba(92,136,178,0.25); }
+
+    /* Hero background más claro */
+    .hero-bg {
+      background: radial-gradient(1000px 600px at -10% -10%, #C8D9E6 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #5B88B2 0%, transparent 60%),
+                  radial-gradient(1000px 600px at 50% 110%, #C8D9E6 0%, transparent 60%),
+                  linear-gradient(180deg, #FFFFFF 0%, #FBF9E4 100%);
+    }
+  
+  </style>
+</head>
+<body class="tracking-tight">
+
+  <!-- NAV -->
+   <header class="fixed inset-x-0 top-0 z-50 backdrop-blur bg-white/30 border-b border-black/10">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
+      <a href="#" class="flex items-center gap-2">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-skyblue/20 text-ocean soft">NV</span>
+        <span class="font-semibold text-midnight">Consultorio Nova Vitalis</span>
+      </a>
+      <div class="hidden md:flex gap-6 text-sm">
+        <a class="hover:text-ocean" href="#resumen">Resumen</a>
+        <a class="hover:text-ocean" href="#modulos">Módulos</a>
+        <a class="hover:text-ocean" href="#beneficios">Beneficios</a>
+        <a class="hover:text-ocean" href="#tecnologia">Tecnología</a>
+        <a class="hover:text-ocean" href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative pt-28 pb-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
+      
+      <!-- Imagen principal a la izquierda -->
+      <div class="md:w-1/2 glass rounded-3xl p-4 soft flex items-center justify-center bg-skyblue">
+        <img src="assets/img/consultorio/consulta1.jpeg" alt="Proyecto destacado" class="rounded-xl w-full h-auto">
+      </div>
+
+      <!-- Contenido de la derecha -->
+      <div class="md:w-1/2 text-center md:text-left">
+        <span class="tag inline-block px-3 py-1 rounded-full text-xs tracking-wider uppercase">Proyecto académico en C#</span>
+        <h1 class="serif mt-6 text-4xl md:text-5xl font-bold text-midnight">Consultorio Nova Vitalis</h1>
+        <p class="mt-4 text-navy leading-relaxed">
+          Plataforma que integra 3 accesos principales: el primero permite registrar a un nuevo paciente; el segundo da acceso a las consultas previas del paciente, protegido mediante contraseña; y el tercero corresponde al administrador, quien cuenta con un acceso más completo y controlado para la gestión del sistema. 
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row sm:gap-4 gap-3 justify-center md:justify-start">
+          <a href="#resumen" class="rounded-2xl bg-midnight hover:bg-navy text-white font-semibold px-5 py-2.5 text-sm transition">Ver resumen</a>
+          <a href="#modulos" class="rounded-2xl bg-midnight hover:bg-navy text-white font-semibold px-5 py-2.5 text-sm transition">Explorar módulos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMEN -->
+  <section id="resumen" class="py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10 items-start">
+      <div class="lg:col-span-2 glass rounded-3xl p-8 soft bg-skyblue">
+        <h2 class="serif text-3xl md:text-4xl font-semibold mb-4 text-midnight">Resumen — ¿Qué se hizo?</h2>
+        <p class="text-navy leading-relaxed">
+          Se diseño un <span class="font-semibold">consultorio médico</span> con enfoque en atención primaria y apoyo para las enfemeras y medicos, triage, reporte mediocos en PDF. Se realizaron <span class="font-semibold">+200 simulaciones</span> para optimización de procesos.
+        </p>
+        <div class="divider my-6"></div>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-navy">
+          <li>✔️ Captura guiada y validada de datos de pacientes.</li>
+          <li>✔️ Consultas solo con el adcceso de la matricula.</li>
+          <li>✔️ Historial y búsqueda por matrícula.</li>
+          <li>✔️ Colores de triage y alertas</li>
+          <li>✔️ Genera reporte de PDF.</li>
+          <li>✔️ Eliminación del expediente.</li>
+        </ul>
+      </div>
+      <aside class="space-y-4">
+        <div class="glass rounded-3xl p-6 soft bg-skyblue">
+          <h3 class="font-semibold mb-2 text-midnight">¿Para qué sirve?</h3>
+          <p class="text-sm text-navy">Apoya la formación de estudiantes, agiliza la atención y permite evaluar hipótesis en un ambiente controlado.</p>
+        </div>
+
+        <div class="glass rounded-3xl p-6 soft bg-skyblue">
+          <h3 class="font-semibold mb-2 text-midnight">Usuarios previstos</h3>
+          <p class="text-sm text-navy">Personal de clínica, docentes, alumnos de prácticas y equipo de investigación.</p>
+        </div>
+
+        <div class="glass rounded-3xl p-6 soft bg-skyblue">
+          <h3 class="font-semibold mb-2 text-midnight">Estado</h3>
+          <p class="text-sm text-navy">MVP funcional con plan de extensión a móvil.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- MODULOS + CARRUSEL -->
+  <section id="modulos" class="py-20 bg-skyblue">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="serif text-3xl md:text-4xl font-semibold text-midnight">Módulos principales</h2>
+        <p class="mt-2 text-navy">Cada módulo puede activarse de forma independiente o como ecosistema.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+        <article class="glass rounded-3xl p-6 soft bg-white-custom">
+          <h3 class="font-semibold text-lg text-midnight">Registro y Expediente</h3>
+          <p class="mt-2 text-sm text-navy">Alta, edición, búsqueda y resguardo de pacientes con control de versiones.</p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft bg-white-custom">
+          <h3 class="font-semibold text-lg text-midnight">Modificadion y Eliminación</h3>
+          <p class="mt-2 text-sm text-navy">Con acceso controlado para las modificaciones o elimianción de los datos guardados.</p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft bg-white-custom">
+          <h3 class="font-semibold text-lg text-midnight">Mostrar Expedientes</h3>
+          <p class="mt-2 text-sm text-navy">Clasificación por niveles (verde, amarillo, rojo) y notificaciones de riesgo.</p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft bg-white-custom">
+          <h3 class="font-semibold text-lg text-midnight">Triage y Alertas</h3>
+          <p class="mt-2 text-sm text-navy">Requiere usuario y contraseña para modificar o eliminar expedientes.</p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft bg-white-custom">
+          <h3 class="font-semibold text-lg text-midnight">Consultas y Tratamientos</h3>
+          <p class="mt-2 text-sm text-navy">Notas SOAP, recetas, bitácora y seguimiento longitudinal.</p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft bg-white-custom">
+          <h3 class="font-semibold text-lg text-midnight">Reportes PDFs</h3>
+          <p class="mt-2 text-sm text-navy">Consulta por mes, Consultas por medico, Pacientes  con alergias y Expedientes completos</p>
+        </article>
+
+
+      </div>
+
+       <!-- CARRUSEL MOSAICO -->
+  <section id="carrusel" class="py-20 bg-white/5">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="serif text-3xl md:text-4xl font-semibold">Galería de simulaciones</h2>
+        <p class="mt-2 text-navy">Visualiza los diferentes escenarios y gráficos del simulador</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="col-span-2 row-span-2">
+          <img src="assets/img/consultorio/consulta2.jpeg" alt="Simulación principal" class="w-full h-full object-cover rounded-2xl soft">
+        </div>
+        <img src="assets/img/consultorio/consulta3.jpeg" alt="Simulación secundaria" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/consultorio/consulta4.jpeg" alt="Gráfica 1" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/consultorio/consulta5.jpeg" alt="Gráfica 2" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/consultorio/consulta6.jpeg" alt="Reporte Power BI" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/consultorio/consulta7.jpeg" alt="Reporte Power BI" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/consultorio/consulta8.jpeg" alt="Reporte Power BI" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/consultorio/consulta9.jpeg" alt="Reporte Power BI" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/consultorio/consultas10.jpeg" alt="Reporte Power BI" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/consultorio/consultas12.jpeg" alt="Reporte Power BI" class="w-full h-40 object-cover rounded-2xl soft">
+      </div>
+    </div>
+  </section>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios" class="py-20 bg-white-custom">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="serif text-3xl md:text-4xl font-semibold text-midnight">Beneficios clave</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-3xl p-6 soft bg-skyblue">
+          <h3 class="font-semibold text-midnight">Aprendizaje guiado</h3>
+          <p class="mt-2 text-sm text-navy">Estandariza prácticas, minimiza errores y refuerza el método clínico.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 soft bg-skyblue">
+          <h3 class="font-semibold text-midnight">Investigación y datos</h3>
+          <p class="mt-2 text-sm text-navy">Estructura datasets para análisis estadístico y tableros.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 soft bg-skyblue">
+          <h3 class="font-semibold text-midnight">Escalabilidad</h3>
+          <p class="mt-2 text-sm text-navy">Arquitectura modular lista para crecer a web y móvil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECNOLOGIA -->
+  <section id="tecnologia" class="py-20 bg-skyblue">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="serif text-3xl md:text-4xl font-semibold text-midnight">Tecnología y stack</h2>
+        <p class="mt-2 text-navy">Código en C# (simulación) para visualizaciones futuras.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-3xl p-6 soft bg-white-custom">
+          <h3 class="font-semibold text-midnight">Seguridad</h3>
+          <ul class="mt-2 text-sm text-navy list-disc pl-5 space-y-1">
+            <li>Control de acceso por roles</li>
+            <li>Respaldo de archivos y bitácora</li>
+            <li>Validaciones de captura</li>
+          </ul>
+        </div>
+        <div class="glass rounded-3xl p-6 soft bg-white-custom">
+          <h3 class="font-semibold text-midnight">Próximos pasos</h3>
+          <ul class="mt-2 text-sm text-navy list-disc pl-5 space-y-1">
+            <li>API REST y base de datos relacional</li>
+            <li>Panel docente con rúbricas</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Botón elegante Volver al portafolio -->
+      <div class="mt-10 text-center">
+        <a href="index.html" class="inline-block px-6 py-3 rounded-xl border border-midnight text-midnight hover:bg-midnight hover:text-white font-semibold transition">
+          ⬅ Volver al portafolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 bg-skyblue dark:bg-gray-900">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold text-midnight dark:text-white mb-4">Contacto</h2>
+      <p class="text-navy dark:text-gray-300 mb-6">Escríbeme o sígueme en mis redes sociales.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer py-10 bg-midnight text-white">
+    <div class="footer__container container mx-auto text-center">
+      <h1 class="footer__title text-2xl font-bold mb-2">Leslie</h1>
+
+      <ul class="footer__social flex justify-center gap-6 mb-4">
+        <li>
+          <a href="https://www.linkedin.com/in/leslie-dominguez-/" class="footer__social-link text-xl hover:text-skyblue transition">
+            <i class="ri-linkedin-box-fill"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Lesli-Rojas" class="footer__social-link text-xl hover:text-skyblue transition">
+            <i class="ri-github-fill"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/lesly_do_/?next=%2F" class="footer__social-link text-xl hover:text-skyblue transition">
+            <i class="ri-instagram-fill"></i>
+          </a>
+        </li>
+      </ul>
+      
+      <span class="footer__copy text-sm text-gray-400">Consultotio Nova Vitalis — Proyecto académico</span>
+      <p class="footer__copy text-sm text-gray-400">© 2025 Todos los derechos reservados</p>
+    </div>
+  </footer>
+</body>
+</html>

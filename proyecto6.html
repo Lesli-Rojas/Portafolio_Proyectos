@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" class="transition-colors duration-500">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clínica Universitaria</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Playfair Display', serif;
+      background: radial-gradient(1000px 600px at -10% -10%, #C8D9E6 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #5B88B2 0%, transparent 60%),
+                  radial-gradient(1000px 600px at 50% 110%, #C8D9E6 0%, transparent 60%),
+                  linear-gradient(180deg, #FFFFFF 0%, #FBF9E4 100%);
+      color: #122C4F;
+    }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08); }
+    .soft { box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(0,0,0,.15), transparent); }
+    .tag { border: 1px solid rgba(0,0,0,.1); background: rgba(92,136,178,.15); color: #122C4F; }
+    .bg-skyblue { background-color: #C8D9E6; }
+    .bg-midnight { background-color: #122C4F; }
+    .text-midnight { color: #122C4F; }
+    .text-ocean { color: #5B88B2; }
+    .text-navy { color: #2F4156; }
+    .text-teal { color: #567C8D; }
+    .bg-pearl { background-color: #FBF9E4; }
+    .bg-white-custom { background-color: #FFFFFF; }
+
+    .btn-primary { background-color: #5B88B2; color: #ffffff; }
+    .btn-primary:hover { background-color: #567C8D; }
+    .btn-secondary { background-color: rgba(92,136,178,0.15); color: #122C4F; }
+    .btn-secondary:hover { background-color: rgba(92,136,178,0.25); }
+
+    /* Modo oscuro */
+    .dark body { background: #0F172A; color: #E2E8F0; }
+    .dark .bg-skyblue { background-color: #1E293B; }
+    .dark .bg-white-custom { background-color: #1E293B; }
+    .dark .text-midnight { color: #E2E8F0; }
+    .dark .text-navy { color: #CBD5E1; }
+    .dark .glass { background: rgba(30,41,59,0.7); border-color: rgba(255,255,255,0.1); }
+    .dark .tag { 
+      color: #ffffff !important; 
+      background: rgba(92,136,178,0.3); /* contraste mejor en oscuro */
+    }
+  </style>
+</head>
+<body class="tracking-tight">
+
+  <!-- NAV -->
+  <header class="fixed inset-x-0 top-0 z-50 backdrop-blur bg-white/30 dark:bg-slate-900/30 border-b border-black/10 dark:border-white/10">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
+      <a href="#" class="flex items-center gap-2">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-skyblue/20 text-ocean soft">CU</span>
+        <span class="font-semibold text-midnight dark:text-white">Clínica Universitaria</span>
+      </a>
+      <div class="hidden md:flex gap-6 text-sm">
+        <a class="hover:text-ocean dark:hover:text-teal" href="#resumen">Resumen</a>
+        <a class="hover:text-ocean dark:hover:text-teal" href="#modulos">Módulos</a>
+        <a class="hover:text-ocean dark:hover:text-teal" href="#beneficios">Beneficios</a>
+        <a class="hover:text-ocean dark:hover:text-teal" href="#tecnologia">Tecnología</a>
+        <a class="hover:text-ocean dark:hover:text-teal" href="#contacto">Contacto</a>
+      </div>
+      <button id="theme-toggle" class="ml-4 text-2xl">
+        <i id="theme-icon" class="ri-moon-line"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative pt-28 pb-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
+      <div class="md:w-1/2 glass rounded-3xl p-4 soft flex items-center justify-center bg-skyblue">
+        <img src="assets/img/Clinica/Clinica1.jpeg" alt="Proyecto destacado" class="rounded-xl w-full h-auto object-cover">
+      </div>
+      <div class="md:w-1/2 text-center md:text-left md:items-start flex flex-col">
+        <span class="tag inline-block px-3 py-1 rounded-full text-xs tracking-wider uppercase">Proyecto académico en C++</span>
+        <h1 class="mt-6 text-4xl md:text-5xl font-bold heading-primary">Clínica Universitaria</h1>
+        <p class="mt-4 paragraph-primary leading-relaxed">
+          Plataforma integral para gestión clínica y simulación médica universitaria. Permite registro de pacientes, mostrar, eliminar y modificar expedientes clínicos de manera segura, agilizando consultas y reduciendo errores.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row sm:gap-4 gap-3 justify-center md:justify-start">
+          <a href="#resumen" class="rounded-2xl bg-midnight hover:bg-navy dark:bg-gray-800 dark:hover:bg-gray-700 text-white font-semibold px-5 py-2.5 text-sm transition">Ver resumen</a>
+          <a href="#modulos" class="rounded-2xl bg-midnight hover:bg-navy dark:bg-gray-800 dark:hover:bg-gray-700 text-white font-semibold px-5 py-2.5 text-sm transition">Explorar módulos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMEN -->
+  <section id="resumen" class="py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10 items-start">
+      <div class="lg:col-span-2 glass rounded-3xl p-8 soft bg-skyblue dark:bg-gray-800">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-midnight dark:text-white">Resumen — ¿Qué se hizo?</h2>
+        <p class="text-navy dark:text-gray-300 leading-relaxed">
+          Se diseñó una <span class="font-semibold">clínica académica</span> con enfoque en atención primaria y apoyo a investigación. Incluye registro de pacientes, gestión de expedientes y eliminación/modificación controlada por contraseña. Se realizaron <span class="font-semibold">+100 simulaciones</span> para optimización de procesos.
+        </p>
+        <div class="divider my-6"></div>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-navy dark:text-gray-300">
+          <li>✔️ Captura guiada y validada de datos</li>
+          <li>✔️ Mostrar historial y búsqueda por matrícula / folio</li>
+          <li>✔️ Modificación del expediente con usuario y contraseña</li>
+          <li>✔️ Eliminación del expediente con matrícula de paciente</li>
+        </ul>
+      </div>
+      <aside class="space-y-4">
+        <div class="glass rounded-3xl p-6 soft bg-skyblue dark:bg-gray-800">
+          <h3 class="font-semibold mb-2 text-midnight dark:text-white">¿Para qué sirve?</h3>
+          <p class="text-sm text-navy dark:text-gray-300">Apoya la formación de estudiantes, agiliza la atención y permite evaluar hipótesis en un ambiente controlado.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 soft bg-skyblue dark:bg-gray-800">
+          <h3 class="font-semibold mb-2 text-midnight dark:text-white">Usuarios previstos</h3>
+          <p class="text-sm text-navy dark:text-gray-300">Personal de clínica, docentes, alumnos de prácticas y equipo de investigación.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- MODULOS + CARRUSEL -->
+  <section id="modulos" class="py-20 bg-skyblue dark:bg-gray-900">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl md:text-4xl font-semibold text-midnight dark:text-white">Módulos principales</h2>
+        <p class="mt-2 text-navy dark:text-gray-300">Cada módulo puede activarse de forma independiente o como ecosistema.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <article class="glass rounded-3xl p-6 soft bg-white-custom dark:bg-gray-800">
+          <h3 class="font-semibold text-lg text-midnight dark:text-white">Registro y Expediente</h3>
+          <p class="mt-2 text-sm text-navy dark:text-gray-300">Alta, edición, búsqueda y resguardo de pacientes con control de versiones.</p>
+        </article>
+        <article class="glass rounded-3xl p-6 soft bg-white-custom dark:bg-gray-800">
+          <h3 class="font-semibold text-lg text-midnight dark:text-white">Mostrar Expedientes</h3>
+          <p class="mt-2 text-sm text-navy dark:text-gray-300">Visualiza los pacientes registrados con sus datos personales completos.</p>
+        </article>
+        <article class="glass rounded-3xl p-6 soft bg-white-custom dark:bg-gray-800">
+          <h3 class="font-semibold text-lg text-midnight dark:text-white">Eliminación y Modificación</h3>
+          <p class="mt-2 text-sm text-navy dark:text-gray-300">Requiere usuario y contraseña para modificar o eliminar expedientes.</p>
+        </article>
+      </div>
+      <!-- Carrusel de imágenes -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="col-span-2 row-span-2">
+          <img src="assets/img/Clinica/Clinica2.jpeg" alt="Simulación principal" class="w-full h-full object-cover rounded-2xl soft">
+        </div>
+        <img src="assets/img/Clinica/Clinica3.jpeg" alt="Simulación secundaria" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/Clinica/Clinica4.jpeg" alt="Gráfica 1" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/Clinica/Clinica5.jpeg" alt="Gráfica 2" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/Clinica/Clinica6.jpeg" alt="Reporte Power BI" class="w-full h-40 object-cover rounded-2xl soft">
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios" class="py-20 bg-white-custom dark:bg-gray-900">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl md:text-4xl font-semibold text-midnight dark:text-white">Beneficios clave</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-3xl p-6 soft bg-skyblue dark:bg-gray-800">
+          <h3 class="font-semibold text-midnight dark:text-white">Aprendizaje guiado</h3>
+          <p class="mt-2 text-sm text-navy dark:text-gray-300">Estandariza prácticas, minimiza errores y refuerza el método clínico.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 soft bg-skyblue dark:bg-gray-800">
+          <h3 class="font-semibold text-midnight dark:text-white">Investigación y datos</h3>
+          <p class="mt-2 text-sm text-navy dark:text-gray-300">Estructura datasets para análisis estadístico y tableros.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 soft bg-skyblue dark:bg-gray-800">
+          <h3 class="font-semibold text-midnight dark:text-white">Escalabilidad</h3>
+          <p class="mt-2 text-sm text-navy dark:text-gray-300">Arquitectura modular lista para crecer a web y móvil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECNOLOGÍA -->
+  <section id="tecnologia" class="py-20 bg-skyblue dark:bg-gray-900">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl md:text-4xl font-semibold text-midnight dark:text-white">Tecnología y stack</h2>
+        <p class="mt-2 text-navy dark:text-gray-300">Código en C++ (simulación) para visualizaciones futuras.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-3xl p-6 soft bg-white-custom dark:bg-gray-800">
+          <h3 class="font-semibold text-midnight dark:text-white">Seguridad</h3>
+          <ul class="mt-2 text-sm text-navy dark:text-gray-300 list-disc pl-5 space-y-1">
+            <li>Control de acceso por roles</li>
+            <li>Respaldo de archivos y bitácora</li>
+            <li>Validaciones de captura</li>
+          </ul>
+        </div>
+        <div class="glass rounded-3xl p-6 soft bg-white-custom dark:bg-gray-800">
+          <h3 class="font-semibold text-midnight dark:text-white">Próximos pasos</h3>
+          <ul class="mt-2 text-sm text-navy dark:text-gray-300 list-disc pl-5 space-y-1">
+            <li>API REST y base de datos relacional</li>
+            <li>Panel docente con rúbricas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="index.html" class="inline-block px-6 py-3 rounded-xl border border-midnight dark:border-gray-300 text-midnight dark:text-gray-300 hover:bg-midnight dark:hover:bg-gray-300 hover:text-white dark:hover:text-black font-semibold transition">
+          ⬅ Volver al portafolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 bg-skyblue dark:bg-gray-900">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold text-midnight dark:text-white mb-4">Contacto</h2>
+      <p class="text-navy dark:text-gray-300 mb-6">Escríbeme o sígueme en mis redes sociales.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer py-10 bg-midnight dark:bg-gray-800 text-white dark:text-gray-300">
+    <div class="footer__container container mx-auto text-center">
+      <h1 class="text-2xl font-bold mb-2">Leslie</h1>
+      <ul class="flex justify-center gap-6 mb-4">
+        <li><a href="https://www.linkedin.com/in/leslie-dominguez-/" class="text-xl hover:text-skyblue transition"><i class="ri-linkedin-box-fill"></i></a></li>
+        <li><a href="https://github.com/Lesli-Rojas" class="text-xl hover:text-skyblue transition"><i class="ri-github-fill"></i></a></li>
+        <li><a href="https://www.instagram.com/lesly_do_/?next=%2F" class="text-xl hover:text-skyblue transition"><i class="ri-instagram-fill"></i></a></li>
+      </ul>
+      <p class="text-sm">© 2025 Leslie Domínguez. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      themeIcon.classList.toggle('ri-sun-line');
+      themeIcon.classList.toggle('ri-moon-line');
+    });
+  </script>
+
+</body>
+</html>

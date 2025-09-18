@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulador de Glucosa</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Remix Icon CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial;
+      background: radial-gradient(1000px 600px at -10% -10%, #C8D9E6 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #5B88B2 0%, transparent 60%),
+                  radial-gradient(1000px 600px at 50% 110%, #C8D9E6 0%, transparent 60%),
+                  linear-gradient(180deg, #FFFFFF 0%, #FBF9E4 100%);
+      color: #122C4F; /* Texto azul oscuro */
+    }
+
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .soft { box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(0,0,0,.15), transparent); }
+
+    .tag {
+      border: 1px solid rgba(0,0,0,.1);
+      background: rgba(92,136,178,.15);
+      color: #122C4F;
+    }
+
+    /* Colores personalizados */
+    .bg-skyblue { background-color: #C8D9E6; }
+    .bg-midnight { background-color: #122C4F; }
+    .text-midnight { color: #122C4F; }
+    .text-ocean { color: #5B88B2; }
+    .text-noir { color: #000000; }
+    .text-navy { color: #2F4156; }
+    .text-teal { color: #567C8D; }
+    .bg-pearl { background-color: #FBF9E4; }
+    .bg-white-custom { background-color: #FFFFFF; }
+
+    /* Botones */
+    .btn-primary {
+      background-color: #5B88B2; 
+      color: #ffffff; 
+    }
+    .btn-primary:hover { background-color: #567C8D; }
+
+    .btn-secondary {
+      background-color: rgba(92,136,178,0.15);
+      color: #122C4F;
+    }
+    .btn-secondary:hover { background-color: rgba(92,136,178,0.25); }
+
+    /* Hero background más claro */
+    .hero-bg {
+      background: radial-gradient(1000px 600px at -10% -10%, #C8D9E6 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #5B88B2 0%, transparent 60%),
+                  radial-gradient(1000px 600px at 50% 110%, #C8D9E6 0%, transparent 60%),
+                  linear-gradient(180deg, #FFFFFF 0%, #FBF9E4 100%);
+    }
+  </style>
+</head>
+
+<body class="tracking-tight">
+
+  <!-- NAV -->
+  <header class="fixed inset-x-0 top-0 z-50 backdrop-blur bg-white/30 border-b border-black/10">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
+      <a href="#" class="flex items-center gap-2">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-skyblue/20 text-ocean soft">SG</span>
+        <span class="font-semibold text-midnight">Simulador de Glucosa</span>
+      </a>
+      <div class="hidden md:flex gap-6 text-sm">
+        <a class="hover:text-ocean" href="#resumen">Resumen</a>
+        <a class="hover:text-ocean" href="#modulos">Módulos</a>
+        <a class="hover:text-ocean" href="#beneficios">Beneficios</a>
+        <a class="hover:text-ocean" href="#tecnologia">Tecnología</a>
+        <a class="hover:text-ocean" href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-bg relative pt-28 pb-24">
+    <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+      <span class="tag inline-block px-3 py-1 rounded-full text-xs tracking-wider uppercase text-ocean">Proyecto académico en C++</span>
+      
+      <h1 class="serif mt-6 text-4xl md:text-6xl font-bold leading-tight text-midnight">
+        Simulador del Comportamiento de la Glucosa en Sangre.
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-3xl text-base md:text-lg text-midnight/80">
+        El sistema permite analizar gráficamente la evolución de los niveles de glucosa mediante representaciones en Power BI. 
+        Los datos se generan de manera automática con un modelo matemático en C++ basado en el método de Runge-Kutta, integrando 
+        factores como insulina, alimentos, ejercicio y ayuno.
+      </p>
+
+      <!-- Botones -->
+      <div class="mt-8 flex justify-center gap-3">
+        <a href="#resumen" class="rounded-2xl btn-secondary px-5 py-2.5 text-sm">Ver resumen</a>
+        <a href="#modulos" class="rounded-2xl btn-primary px-5 py-2.5 text-sm font-semibold">Explorar módulos</a>
+      </div>
+
+      <!-- Imagen centrada -->
+      <div class="mt-12 flex justify-center">
+        <div class="glass rounded-3xl p-4 soft max-w-lg">
+          <img src="assets/img/Glucosa/Glucosa2.png" alt="Proyecto destacado" class="rounded-xl w-full h-auto">
+        </div>
+      </div>
+
+      <!-- Métricas -->
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div class="glass rounded-3xl p-4 soft">
+          <p class="text-3xl font-bold text-midnight">+1,000</p>
+          <p class="text-xs text-midnight/70">Registros simulados</p>
+        </div>
+        <div class="glass rounded-3xl p-4 soft">
+          <p class="text-3xl font-bold text-midnight">24 h</p>
+          <p class="text-xs text-midnight/70">Simulación diaria completa</p>
+        </div>
+        <div class="glass rounded-3xl p-4 soft">
+          <p class="text-3xl font-bold text-midnight">Excel</p>
+          <p class="text-xs text-midnight/70">Exportación de datos</p>
+        </div>
+        <div class="glass rounded-3xl p-4 soft">
+          <p class="text-3xl font-bold text-midnight">Power BI</p>
+          <p class="text-xs text-midnight/70">Visualización dinámica</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMEN -->
+  <section id="resumen" class="relative py-20 bg-transparent">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-10 items-start">
+        
+        <!-- Texto -->
+        <div class="lg:col-span-2 glass rounded-3xl p-8 soft">
+          <h2 class="serif text-3xl md:text-4xl font-semibold mb-4 text-midnight">Resumen — ¿Qué se hizo?</h2>
+          <p class="text-midnight/90 leading-relaxed">
+            Se diseñó un <span class="font-semibold">simulador de glucosa en sangre con el Método de Runge-Kutta</span>. 
+            El modelo se centra en pacientes con diabetes tipo 1 y tipo 2, quienes requieren un control riguroso de la glucosa. 
+            La meta es apoyar a profesionales de la salud y desarrolladores de tecnología médica con un sistema que simule el 
+            impacto de la insulina, la dieta y la actividad física en los niveles de glucosa.
+          </p>
+
+          <div class="divider my-6"></div>
+
+          <ul class="grid sm:grid-cols-2 gap-3 text-sm text-midnight/80">
+            <li>✔️ Modelo matemático avanzado</li>
+            <li>✔️ Integración con Excel</li>
+            <li>✔️ Visualización en Power BI</li>
+            <li>✔️ Reportes personalizables</li>
+            <li>✔️ Datos aleatorios de simulación</li>
+            <li>✔️ Preparado para aplicaciones móviles</li>
+          </ul>
+        </div>
+
+        <!-- Aside -->
+        <aside class="space-y-4">
+          <div class="glass rounded-3xl p-6 soft">
+            <h3 class="font-semibold mb-2 text-midnight">¿Para qué sirve?</h3>
+            <p class="text-sm text-midnight/80">
+              Sirve como herramienta de apoyo para el estudio de la diabetes, facilitando la comprensión del comportamiento de la glucosa 
+              y permitiendo entrenar con escenarios controlados.
+            </p>
+          </div>
+
+          <div class="glass rounded-3xl p-6 soft">
+            <h3 class="font-semibold mb-2 text-midnight">Usuarios previstos</h3>
+            <p class="text-sm text-midnight/80">
+              Estudiantes, médicos en formación, investigadores en salud y desarrolladores de software biomédico.
+            </p>
+          </div>
+
+          <div class="glass rounded-3xl p-6 soft">
+            <h3 class="font-semibold mb-2 text-midnight">Estado</h3>
+            <p class="text-sm text-midnight/80">
+              Actualmente en fase académica de prueba, con prototipos funcionales en C++ y visualización de datos en Power BI.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULOS -->
+  <section id="modulos" class="py-20 bg-transparent">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+      <!-- Título -->
+      <div class="mb-10 text-center">
+        <h2 class="serif text-3xl md:text-4xl font-semibold text-midnight">Módulos principales</h2>
+        <p class="mt-2 text-midnight/75">
+          Cada módulo puede activarse de forma independiente o como parte del ecosistema completo.
+        </p>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-lg text-midnight">Simulación de Glucosa (RK4)</h3>
+          <p class="mt-2 text-sm text-midnight/80">
+            Modelo de 24 horas con variables de insulina, comida, ejercicio y ayuno.
+          </p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-lg text-midnight">Registro matutino</h3>
+          <p class="mt-2 text-sm text-midnight/80">
+            Chequeo inicial del día para monitorear los niveles basales de glucosa.
+          </p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-lg text-midnight">Notas de alimentación y ejercicio</h3>
+          <p class="mt-2 text-sm text-midnight/80">
+            Seguimiento de comidas balanceadas y su impacto en la glucosa, junto a notas sobre actividad física.
+          </p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-lg text-midnight">Datos y Excel</h3>
+          <p class="mt-2 text-sm text-midnight/80">
+            Exportación e importación de datos en CSV y catálogos de registros.
+          </p>
+        </article>
+
+        <article class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-lg text-midnight">Reportes Power BI</h3>
+          <p class="mt-2 text-sm text-midnight/80">
+            Tableros dinámicos con gráficas interactivas para identificar patrones.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRUSEL MOSAICO -->
+  <section id="carrusel" class="py-20 bg-transparent">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="serif text-3xl md:text-4xl font-semibold text-midnight">Galería de simulaciones</h2>
+        <p class="mt-2 text-midnight/75">Visualiza los diferentes escenarios y gráficos del simulador</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="col-span-2 row-span-2">
+          <img src="assets/img/Glucosa/Glucosa2.png" alt="Simulación principal" class="w-full h-full object-cover rounded-2xl soft">
+        </div>
+        <img src="assets/img/Glucosa/glucosa1.jpeg" alt="Simulación secundaria" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/Glucosa/glucosa3.png" alt="Gráfica 1" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/Glucosa/glucosa4.png" alt="Gráfica 2" class="w-full h-40 object-cover rounded-2xl soft">
+        <img src="assets/img/Glucosa/glucosa5.png" alt="Reporte Power BI" class="w-full h-40 object-cover rounded-2xl soft">
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios" class="py-20 bg-transparent">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-10 text-center">
+        <h2 class="serif text-3xl md:text-4xl font-semibold text-midnight">Beneficios clave</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-midnight">Aprendizaje guiado</h3>
+          <p class="mt-2 text-sm text-midnight/80">Facilita la enseñanza y el autoaprendizaje con ejemplos claros.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-midnight">Investigación y datos</h3>
+          <p class="mt-2 text-sm text-midnight/80">Genera datasets realistas para estudios clínicos y científicos.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-midnight">Escalabilidad</h3>
+          <p class="mt-2 text-sm text-midnight/80">Arquitectura modular adaptable a aplicaciones web y móviles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECNOLOGIA -->
+  <section id="tecnologia" class="py-20 bg-transparent">
+     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="serif text-3xl md:text-4xl font-semibold text-midnight">Tecnología y stack</h2>
+        <p class="mt-2 text-midnight/75">
+          Desarrollado en C++ para simulación, con soporte de Excel/CSV y Power BI para visualización.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-midnight">Seguridad</h3>
+          <ul class="mt-2 text-sm text-midnight/80 list-disc pl-5 space-y-1">
+            <li>Validación de datos de entrada</li>
+            <li>Respaldo de archivos exportados</li>
+            <li>Registro de bitácora</li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-3xl p-6 soft">
+          <h3 class="font-semibold text-midnight">Próximos pasos</h3>
+          <ul class="mt-2 text-sm text-midnight/80 list-disc pl-5 space-y-1">
+            <li>Integración con app móvil</li>
+            <li>Implementación de interfaz web interactiva</li>
+            <li>Optimización de algoritmo RK4</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- BOTÓN VOLVER -->
+  <div class="mt-10 text-center">
+    <a href="index.html" class="inline-block px-6 py-3 rounded-xl border border-midnight text-midnight dark:border-gray-300 font-semibold transition">
+      ⬅ Volver al portafolio
+    </a>
+  </div>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 bg-transparent">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold text-midnight">Contacto</h2>
+      <p class="text-navy mb-6">Escríbeme o sígueme en mis redes sociales.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contacto" class="footer py-10 bg-skyblue text-midnight mt-12">
+    <div class="footer__container container mx-auto text-center">
+      <h1 class="footer__title text-2xl font-bold mb-2">Leslie</h1>
+
+     <ul class="footer__social flex justify-center gap-6 mb-4">
+        <li>
+          <a href="https://www.linkedin.com/in/leslie-dominguez-/" class="footer__social-link text-xl hover:text-skyblue transition">
+            <i class="ri-linkedin-box-fill"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Lesli-Rojas" class="footer__social-link text-xl hover:text-skyblue transition">
+            <i class="ri-github-fill"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/lesly_do_/?next=%2F" class="footer__social-link text-xl hover:text-skyblue transition">
+            <i class="ri-instagram-fill"></i>
+          </a>
+        </li>
+      </ul>
+
+      <p class="mb-4 text-sm text-midnight/70">Proyecto académico — Simulador de Glucosa en Sangre</p>
+      <p class="text-xs text-midnight/50">© 2025 Todos los derechos reservados</p>
+   </div>
+  </footer>
+
+</body>
+</html>
